@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Responsable extends Model
 {
     use HasFactory;
-    public function analyseEnvs()
-    {
-        return $this->belongsToMany(AnalyseEnv::class);
-    }
 }

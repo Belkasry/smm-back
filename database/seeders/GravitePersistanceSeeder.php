@@ -18,15 +18,15 @@ class GravitePersistanceSeeder extends Seeder
         $gravites = [
             [
                 'value' => 1,
-                'description'=>'A l’intérieur de l’entreprise'
+                'description'=>'Moyenne de 2 ans'
             ],
             [
                 'value' => 2,
-                'description'=>'Voisinage de l’entreprise (niveau prefectoral)'
+                'description'=>'2 a 5 ans'
             ],
             [
                 'value' => 3,
-                'description'=>'Régional et national'
+                'description'=>'Plus de  5 ans et cumulatif'
             ],
 
         ];

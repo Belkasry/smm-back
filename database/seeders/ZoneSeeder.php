@@ -19,9 +19,9 @@ class ZoneSeeder extends Seeder
             ['name' => "Zone 1.1",
                 'activite_id' => 1],
             ['name' => "Zone 1.2",
-                'activite_id' => 1],
-            ['name' => "Zone 2.1",
                 'activite_id' => 2],
+            ['name' => "Zone 2.1",
+                'activite_id' => 3],
         ];
 
         foreach ($zones as $zone) {

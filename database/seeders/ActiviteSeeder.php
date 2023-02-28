@@ -45,8 +45,8 @@ class ActiviteSeeder extends Seeder
 
         foreach ($activites as $activite) {
             Activite::create([
-                'name' => $activite,
-                'service_id'=> mt_rand(1,6)
+                'name' => $activite ,
+                'service_id'=> mt_rand(1,2)
             ]);
         }
     }

@@ -30,6 +30,7 @@ return [
     | to immediately expire on the browser closing, set that option.
     |
     */
+    'same_site' => 'none',
 
     'lifetime' => env('SESSION_LIFETIME', 120),
 
@@ -196,6 +197,5 @@ return [
     |
     */
 
-    'same_site' => 'lax',
 
 ];

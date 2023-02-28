@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GraviteDangerositeSeeder::class);
         $this->call(GraviteEtenduSeeder::class);
         $this->call(GravitePersistanceSeeder::class);
-        $this->call(GravitePersistanceSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

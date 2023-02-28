@@ -19,9 +19,9 @@ class PosteTravailSeeder extends Seeder
             ['name' => "Poste_travail 1.1",
                 'zone_id' => 1],
             ['name' => "Poste_travail 1.2",
-                'zone_id' => 1],
+                'zone_id' => 2],
             ['name' => "Poste_travail 1.3",
-                'zone_id' => 1],
+                'zone_id' => 3],
         ];
 
         foreach ($poste_travails as $poste_travail) {
