@@ -47,7 +47,13 @@ class PlanActionController extends Controller
         $planAction->ordre_priorite = $validatedData['ordre_priorite'] ?? 0;
         $planAction->notes = $validatedData['notes'];
         $planAction->cout = $validatedData['cout'];
+
         $analyseEnv->planActions()->save($planAction);
+        if ($request->has('responsables')) {
+            $responsables = $request->input('responsables');
+            $planAction->responsables()->sync($responsables);
+        }
+
         return response()->json(['analyse' => $planAction, 'message' => 'Action created successfully'], 201);
 
     }
@@ -56,7 +62,7 @@ class PlanActionController extends Controller
     public function show($id)
     {
         $plan = PlanAction::with([
-//            "responsables",
+            "responsables",
             "analyseEnv"])->findOrFail($id);
         return response()->json($plan, 200);
     }
@@ -68,9 +74,6 @@ class PlanActionController extends Controller
             'description' => 'sometimes|string',
             'progress' => 'sometimes|integer',
             'delai' => 'sometimes',
-            'ordre_priorite' => 'sometimes|integer',
-            'notes' => 'sometimes|string',
-            'cout' => 'sometimes|numeric',
         ]);
 
 
@@ -84,9 +87,6 @@ class PlanActionController extends Controller
         $planAction->description = $validatedData['description'];
         $planAction->progress = $validatedData['progress'] ?? 0;
         $planAction->delai = $validatedData['delai'];
-        $planAction->ordre_priorite = $validatedData['ordre_priorite'] ?? 0;
-        $planAction->notes = $validatedData['notes'];
-        $planAction->cout = $validatedData['cout'];
         $planAction->save();
 
         return response()->json(['analyse' => $planAction, 'message' => 'Action updated successfully'], 200);

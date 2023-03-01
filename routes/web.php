@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/smm');
 });
 Route::get('/smm', function () {
     return \File::get(public_path() . '/index.html');

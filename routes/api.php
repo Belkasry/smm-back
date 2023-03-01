@@ -44,6 +44,12 @@ Route::post('/login', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/users', function () {
+    $users = \App\Models\User::with('service')->get();
+
+    return response()->json($users);
+});
+
 Route::get('analyse', [\App\Http\Controllers\AnalyseEnvController::class, 'index']);
 Route::post('analyse', [\App\Http\Controllers\AnalyseEnvController::class, 'store']);
 Route::get('analyse/{id}', [\App\Http\Controllers\AnalyseEnvController::class, 'show']);
@@ -61,6 +67,7 @@ Route::delete('action/{id}', [\App\Http\Controllers\PlanActionController::class,
 
 Route::get('valeur-ref', [\App\Http\Controllers\ValeurReferentielController::class, 'index']);
 
+Route::get('chart-data/{id}', [\App\Http\Controllers\ChartDataController::class, 'show']);
 Route::get('chart-data', [\App\Http\Controllers\ChartDataController::class, 'index']);
-Route::post('/chart-data', [\App\Http\Controllers\ChartDataController::class, 'create']);
-Route::post('/chart-data/{id}/month-values', [\App\Http\Controllers\ChartDataController::class, 'fillmonth']);
+Route::post('chart-data', [\App\Http\Controllers\ChartDataController::class, 'create']);
+Route::post('chart-data/{id}/month-values', [\App\Http\Controllers\ChartDataController::class, 'fillmonth']);
