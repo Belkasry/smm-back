@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-Route::post('/login', function (Request $request) {
+Route::post('auth', function (Request $request) {
+
     $request->validate([
         'email' => 'required|email',
         'password' => 'required',
     ]);
-
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
@@ -37,7 +37,7 @@ Route::post('/login', function (Request $request) {
     }
     return response()->json([
         'email' => ['The provided credentials are incorrect.'],
-    ]);
+    ],404);
 });
 
 

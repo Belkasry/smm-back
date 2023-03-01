@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Activite;
+use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -43,10 +44,11 @@ class ActiviteSeeder extends Seeder
             'Circulation des engin',
         ];
 
+
         foreach ($activites as $activite) {
             Activite::create([
                 'name' => $activite ,
-                'service_id'=> mt_rand(1,2)
+                'service_id'=> Service::first()->id
             ]);
         }
     }

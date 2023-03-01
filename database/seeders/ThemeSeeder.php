@@ -15,7 +15,7 @@ class ThemeSeeder extends Seeder
      */
     public function run()
     {
-        $themes = ["Sol", "Air", "Eau", "Bruit", "Déchets", "Social"];
+        $themes = ["Sol", "Air", "Eau Consommation", "Eau Rejet", "Bruit", "Déchets", "Social"];
         foreach ($themes as $theme) {
             Theme::create([
                 'name' => $theme

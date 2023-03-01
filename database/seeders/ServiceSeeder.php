@@ -26,9 +26,10 @@ class ServiceSeeder extends Seeder
             'Service généraux',
             'Usine',
         ];
-
+        $i = 1;
         foreach ($services as $service) {
             Service::create([
+                'id' => $i++,
                 'name' => $service,
             ]);
         }
