@@ -87,4 +87,16 @@ class ChartDataController extends Controller
         return response()->json(['message' => 'Month values updated successfully.']);
     }
 
+    public function destroy($id)
+    {
+        $chartData = ChartData::find($id);
+
+        if ($chartData) {
+            $chartData->delete();
+            return response()->json(['message' => 'AnalyseEnv has been soft-deleted.']);
+        } else {
+            return response()->json(['message' => 'AnalyseEnv not found.'], 404);
+        }
+    }
+
 }

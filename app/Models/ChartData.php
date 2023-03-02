@@ -4,22 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChartData extends Model
 {
     use HasFactory;
-    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'theme',
         'chartName',
         'barColor',
-    ]; // Set the fillable fields
+    ];
 
     public function monthValues()
     {
         return $this->hasMany(MonthValue::class);
     }
 
-    public $timestamps = false; // Disable timestamps
 }

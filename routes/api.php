@@ -71,3 +71,4 @@ Route::get('chart-data/{id}', [\App\Http\Controllers\ChartDataController::class,
 Route::get('chart-data', [\App\Http\Controllers\ChartDataController::class, 'index']);
 Route::post('chart-data', [\App\Http\Controllers\ChartDataController::class, 'create']);
 Route::post('chart-data/{id}/month-values', [\App\Http\Controllers\ChartDataController::class, 'fillmonth']);
+Route::delete('chart-data/{id}', [\App\Http\Controllers\ChartDataController::class, 'destroy']);

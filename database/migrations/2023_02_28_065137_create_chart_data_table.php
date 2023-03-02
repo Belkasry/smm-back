@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('theme');
             $table->string('chartName');
             $table->string('barColor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
