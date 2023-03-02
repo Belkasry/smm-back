@@ -10,7 +10,7 @@ class PlanActionController extends Controller
 {
     public function index()
     {
-        $planActions = PlanAction::with("analyseEnv")->get();
+        $planActions = PlanAction::with(["analyseEnv","responsables"])->get();
         return response()->json($planActions);
     }
 
