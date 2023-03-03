@@ -60,7 +60,6 @@ class AnalyseEnvController extends Controller
             'gravite_etendu_ir_id' => 'required',
             'gravite_dangerosite_ir_id' => 'required',
             'gravite_persistance_ir_id' => 'required',
-            's_ns' => 'required|boolean',
             'niveau_maitrise_id' => 'required',
         ];
 
@@ -100,7 +99,6 @@ class AnalyseEnvController extends Controller
         $analyseEnv->gravite_etendu_ir_id = $request->input('gravite_etendu_ir_id');
         $analyseEnv->gravite_dangerosite_ir_id = $request->input('gravite_dangerosite_ir_id');
         $analyseEnv->gravite_persistance_ir_id = $request->input('gravite_persistance_ir_id');
-        $analyseEnv->s_ns = $request->input('s_ns');
         $analyseEnv->niveau_maitrise_id = $request->input('niveau_maitrise_id');
         $analyseEnv->delai = $request->input('delai');
 
@@ -187,8 +185,8 @@ class AnalyseEnvController extends Controller
             'gravite_etendu_ir_id' => 'sometimes|required',
             'gravite_dangerosite_ir_id' => 'sometimes|required',
             'gravite_persistance_ir_id' => 'sometimes|required',
-            's_ns' => 'sometimes|required|boolean',
             'niveau_maitrise_id' => 'sometimes|required',
+            'delai' => 'sometimes|required',
         ];
 
         $messages = [
@@ -223,7 +221,6 @@ class AnalyseEnvController extends Controller
             'gravite_etendu_ir_id',
             'gravite_dangerosite_ir_id',
             'gravite_persistance_ir_id',
-            's_ns',
             'niveau_maitrise_id',
             'delai',
         ]));

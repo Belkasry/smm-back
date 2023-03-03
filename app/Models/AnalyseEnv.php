@@ -47,6 +47,12 @@ class AnalyseEnv extends Model
 
             $impact = $f * ($g_e + $g_p + $g_d);
 
+            if($analyse->f_g>20){
+                $analyse->s_ns=1;
+            }else{
+                $analyse->s_ns=0;
+            }
+
             $analyse->impact_residuel = $impact;
 
             if ($impact >= 0 && $impact <= 10) {
