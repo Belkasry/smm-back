@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnalyseEnv;
 use App\Models\NiveauPriorite;
 use Illuminate\Http\Request;
 
@@ -14,72 +15,9 @@ class NiveauPrioriteController extends Controller
      */
     public function index()
     {
-        //
+        return NiveauPriorite::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NiveauPriorite  $niveauPriorite
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NiveauPriorite $niveauPriorite)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NiveauPriorite  $niveauPriorite
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NiveauPriorite $niveauPriorite)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NiveauPriorite  $niveauPriorite
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NiveauPriorite $niveauPriorite)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NiveauPriorite  $niveauPriorite
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NiveauPriorite $niveauPriorite)
-    {
-        //
-    }
 }

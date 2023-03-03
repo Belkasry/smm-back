@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\NiveauMaitrise;
+use App\Models\NiveauPriorite;
 use Illuminate\Http\Request;
 
 class NiveauMaitriseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return NiveauMaitrise::all();
     }
 
     /**

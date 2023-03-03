@@ -37,7 +37,7 @@ Route::post('auth', function (Request $request) {
     }
     return response()->json([
         'email' => ['The provided credentials are incorrect.'],
-    ],404);
+    ], 404);
 });
 
 
@@ -50,11 +50,16 @@ Route::get('/users', function () {
     return response()->json($users);
 });
 
+
 Route::get('analyse', [\App\Http\Controllers\AnalyseEnvController::class, 'index']);
+Route::get('analyses', [\App\Http\Controllers\AnalyseEnvController::class, 'all']);
 Route::post('analyse', [\App\Http\Controllers\AnalyseEnvController::class, 'store']);
 Route::get('analyse/{id}', [\App\Http\Controllers\AnalyseEnvController::class, 'show']);
 Route::put('analyse/{id}', [\App\Http\Controllers\AnalyseEnvController::class, 'edit']);
 Route::delete('analyse/{id}', [\App\Http\Controllers\AnalyseEnvController::class, 'destroy']);
+Route::get('analyse/count/priorite', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_niveau_priorite']);
+Route::get('analyse/count/s_ns', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_s_ns']);
+Route::get('analyse/count/maitrise', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_niveau_maitrise']);
 
 
 Route::get('action', [\App\Http\Controllers\PlanActionController::class, 'index']);
@@ -63,9 +68,13 @@ Route::post('action', [\App\Http\Controllers\PlanActionController::class, 'store
 Route::get('action/{id}', [\App\Http\Controllers\PlanActionController::class, 'show']);
 Route::put('action/{id}', [\App\Http\Controllers\PlanActionController::class, 'edit']);
 Route::delete('action/{id}', [\App\Http\Controllers\PlanActionController::class, 'destroy']);
+Route::get('actions/progress', [\App\Http\Controllers\PlanActionController::class, 'progress']);
 
 
 Route::get('valeur-ref', [\App\Http\Controllers\ValeurReferentielController::class, 'index']);
+Route::get('niveau-priorite', [\App\Http\Controllers\NiveauPrioriteController::class, 'index']);
+Route::get('niveau-maitrise', [\App\Http\Controllers\NiveauMaitriseController::class, 'index']);
+
 
 Route::get('chart-data/{id}', [\App\Http\Controllers\ChartDataController::class, 'show']);
 Route::get('chart-data', [\App\Http\Controllers\ChartDataController::class, 'index']);

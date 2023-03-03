@@ -10,8 +10,20 @@ class PlanActionController extends Controller
 {
     public function index()
     {
-        $planActions = PlanAction::with(["analyseEnv","responsables"])->get();
+        $planActions = PlanAction::with(["analyseEnv", "responsables"])->get();
         return response()->json($planActions);
+    }
+
+    public function progress()
+    {
+        $planActions = PlanAction::all();
+        $count= $planActions->count();
+        $average = $planActions->avg('progress');
+
+        return [
+            'average' => $average,
+            'count' => $count,
+        ];
     }
 
     public function actionsByAnalyse($id)
@@ -75,7 +87,6 @@ class PlanActionController extends Controller
             'progress' => 'sometimes|integer',
             'delai' => 'sometimes',
         ]);
-
 
 
         $planAction = PlanAction::find($id);
