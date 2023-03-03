@@ -127,4 +127,19 @@ class PlanActionController extends Controller
             return response()->json(['message' => 'AnalyseEnv not found.'], 404);
         }
     }
+
+
+    function nbr_by_month() {
+        $analyseEnvCounts = AnalyseEnv::selectRaw('DATE_FORMAT(delai, "%Y-%m") as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->get();
+        $planActionCounts = PlanAction::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->get();
+
+        return [
+            'analyseEnvCounts' => $analyseEnvCounts,
+            'planActionCounts' => $planActionCounts,
+        ];
+    }
 }
