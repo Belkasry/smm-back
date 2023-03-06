@@ -16,6 +16,7 @@ use App\Models\NiveauMaitrise;
 use App\Models\NiveauPriorite;
 use App\Models\PlanAction;
 use App\Models\PosteTravail;
+use App\Models\Processus;
 use App\Models\Service;
 use App\Models\Situation;
 use App\Models\Theme;
@@ -31,6 +32,7 @@ class ValeurReferentielController extends Controller
      */
     public function index()
     {
+        $processuses = Processus::all();
         $activites = Activite::all();
         $services = Service::all();
         $aspects = Aspect::all();
@@ -51,6 +53,7 @@ class ValeurReferentielController extends Controller
         $plan_actions = PlanAction::all();
 
         return [
+            "processuses" => $processuses,
             "activites" => $activites,
             "services" => $services,
             "aspects" => $aspects,

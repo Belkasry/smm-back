@@ -40,6 +40,7 @@ class AnalyseEnvController extends Controller
             "frequence",
             "frequence_ir",
             "niveauMaitrise",
+            "processus",
             "service",
             "aspect",
             "moyenMaitriseOrganisations",
@@ -57,45 +58,11 @@ class AnalyseEnvController extends Controller
 
     public function store(Request $request)
     {
-        // Define the validation rules for the request data
-        $rules = [
-            'service_id' => 'required',
-            'activite_id' => 'required',
-            'aspect_id' => 'required',
-            'impact_id' => 'required',
-            'theme_id' => 'required',
-            'situation_id' => 'required',
-            'frequence_id' => 'required',
-            'gravite_etendu_id' => 'required',
-            'gravite_dangerosite_id' => 'required',
-            'gravite_persistance_id' => 'required',
-            'frequence_ir_id' => 'required',
-            'gravite_etendu_ir_id' => 'required',
-            'gravite_dangerosite_ir_id' => 'required',
-            'gravite_persistance_ir_id' => 'required',
-            'niveau_maitrise_id' => 'required',
-        ];
 
-        // Define custom error messages for the validation rules
-        $messages = [
-            'required' => 'The :attribute field is required.',
-            'boolean' => 'The :attribute field must be true or false.',
-            'date_format' => 'The :attribute field must be in the format Y-m-d.'
-        ];
-
-        // Validate the request data using the defined rules and error messages
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        // If the validator fails, return a response indicating the incorrect or missing fields
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors' => $validator->errors()
-            ], 422);
-        }
 
         // If the validation succeeds, create a new AnalyseEnv instance with the validated data
         $analyseEnv = new AnalyseEnv();
+        $analyseEnv->processus_id = $request->input('processus_id');
         $analyseEnv->service_id = $request->input('service_id');
         $analyseEnv->activite_id = $request->input('activite_id');
         $analyseEnv->zone_id = $request->input('zone_id');
@@ -163,6 +130,7 @@ class AnalyseEnvController extends Controller
             "moyenMaitriseHumains",
             "theme",
             "niveauMaitrise",
+            "processus",
             "service",
             "aspect",
             "moyenMaitriseOrganisations",
@@ -183,41 +151,10 @@ class AnalyseEnvController extends Controller
     {
         $analyseEnv = AnalyseEnv::findOrFail($id);
 
-        $rules = [
-            'service_id' => 'sometimes|required',
-            'activite_id' => 'sometimes|required',
-            'aspect_id' => 'sometimes|required',
-            'impact_id' => 'sometimes|required',
-            'theme_id' => 'sometimes|required',
-            'situation_id' => 'sometimes|required',
-            'frequence_id' => 'sometimes|required',
-            'gravite_etendu_id' => 'sometimes|required',
-            'gravite_dangerosite_id' => 'sometimes|required',
-            'gravite_persistance_id' => 'sometimes|required',
-            'frequence_ir_id' => 'sometimes|required',
-            'gravite_etendu_ir_id' => 'sometimes|required',
-            'gravite_dangerosite_ir_id' => 'sometimes|required',
-            'gravite_persistance_ir_id' => 'sometimes|required',
-            'niveau_maitrise_id' => 'sometimes|required',
-            'delai' => 'sometimes|required',
-        ];
 
-        $messages = [
-            'required' => 'The :attribute field is required.',
-            'boolean' => 'The :attribute field must be true or false.',
-            'date_format' => 'The :attribute field must be in the format Y-m-d.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'The given data was invalid.',
-                'errors' => $validator->errors()
-            ], 422);
-        }
 
         $analyseEnv->fill($request->only([
+            'processus_id',
             'service_id',
             'activite_id',
             'zone_id',

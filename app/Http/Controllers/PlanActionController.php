@@ -129,15 +129,21 @@ class PlanActionController extends Controller
     }
 
 
-    function nbr_by_month() {
+    function nbr_by_month($year) {
+        $years = AnalyseEnv::selectRaw('YEAR(delai) as year')
+            ->distinct()
+            ->pluck('year');
         $analyseEnvCounts = AnalyseEnv::selectRaw('DATE_FORMAT(delai, "%Y-%m") as month, COUNT(*) as count')
+            ->whereRaw('YEAR(delai) = ?', [$year])
             ->groupBy('month')
             ->get();
         $planActionCounts = PlanAction::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as count')
+            ->whereRaw('YEAR(created_at) = ?', [$year])
             ->groupBy('month')
             ->get();
 
         return [
+            'years' => $years,
             'analyseEnvCounts' => $analyseEnvCounts,
             'planActionCounts' => $planActionCounts,
         ];

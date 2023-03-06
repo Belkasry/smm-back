@@ -1,10 +1,9 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class AddProcessusToAnalyseEnvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +12,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->bigInteger('processus_id')->unsigned();
+        Schema::table('analyse_envs', function (Blueprint $table) {
+            $table->bigInteger('processus_id')->nullable()->unsigned();
             $table->foreign('processus_id')->references('id')->on('processuses');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::table('analyse_envs', function (Blueprint $table) {
+            $table->dropForeign(['processus_id']);
+            $table->dropColumn('processus_id');
+        });
     }
-};
+}

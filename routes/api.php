@@ -60,7 +60,7 @@ Route::delete('analyse/{id}', [\App\Http\Controllers\AnalyseEnvController::class
 Route::get('analyse/count/priorite', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_niveau_priorite']);
 Route::get('analyse/count/s_ns', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_s_ns']);
 Route::get('analyse/count/maitrise', [\App\Http\Controllers\AnalyseEnvController::class, 'analyse_par_niveau_maitrise']);
-Route::get('charts/month', [\App\Http\Controllers\PlanActionController::class, 'nbr_by_month']);
+Route::get('charts/month/{year}', [\App\Http\Controllers\PlanActionController::class, 'nbr_by_month']);
 
 
 

@@ -13,4 +13,9 @@ class Service extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function processus()
+    {
+        return $this->belongsTo(Processus::class);
+    }
 }

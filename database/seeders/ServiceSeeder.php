@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Processus;
 use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -31,6 +32,7 @@ class ServiceSeeder extends Seeder
             Service::create([
                 'id' => $i++,
                 'name' => $service,
+                'processus_id'=> Processus::first()->id
             ]);
         }
     }

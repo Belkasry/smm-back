@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NiveauMaitriseSeeder::class);
         $this->call(PlanActionSeeder::class);
         $this->call(ResponsableSeeder::class);
+        $this->call(ProcessusSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(ActiviteSeeder::class);
         $this->call(ZoneSeeder::class);

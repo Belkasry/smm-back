@@ -12,6 +12,7 @@ class AnalyseEnv extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
+        'processus_id', // Add service_id to the array
         'service_id', // Add service_id to the array
         'activite_id',
         'zone_id',
@@ -78,7 +79,12 @@ class AnalyseEnv extends Model
     }
 
 
-    public function service()
+    public function processus()
+    {
+        return $this->belongsTo(Processus::class, 'processus_id');
+    }
+
+     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id');
     }

@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('processuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('processus_id')->unsigned();
-            $table->foreign('processus_id')->references('id')->on('processuses');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('processuses');
     }
 };
